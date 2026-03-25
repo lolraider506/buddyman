@@ -21,7 +21,8 @@ body {
   background: radial-gradient(circle at 20% 20%, #1a1a1a, transparent 40%),
               radial-gradient(circle at 80% 80%, #1a1a1a, transparent 40%),
               #0a0a0a;
-  animation: moveBg 12s linear infinite;
+  background-size: 200% 200%;
+  animation: moveBg 10s linear infinite;
 }
 
 @keyframes moveBg {
@@ -142,12 +143,28 @@ h1, h2 {
 .fade:nth-child(1) { animation-delay: 0.2s; }
 .fade:nth-child(2) { animation-delay: 0.4s; }
 .fade:nth-child(3) { animation-delay: 0.6s; }
+.fade:nth-child(4) { animation-delay: 0.8s; }
+.fade:nth-child(5) { animation-delay: 1s; }
 
 @keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.stat {
+  margin: 15px;
+}
+
+.stat h2 {
+  font-size: 2em;
 }
 
 </style>
@@ -161,7 +178,7 @@ h1, h2 {
 
 <div class="card fade">
 <img src="pfp.jpg" class="pfp">
-<h1>devuserr</h1>
+<h1>devuserr.</h1>
 <p>User ID: 1473717217186287790</p>
 <p>Joined: February 18, 2026</p>
 </div>
@@ -170,14 +187,36 @@ h1, h2 {
 <h2>Server Info</h2>
 <p>BGS: QA Tester</p>
 <a class="button" href="https://discord.gg/bgs" target="_blank">Join BGS</a>
-
 <p>California State Prison: Lead Developer</p>
 <p>Invite: Private</p>
 </div>
 
 <div class="card fade">
+<h2>Stats</h2>
+<div class="stats">
+<div class="stat">
+<h2 id="bots">0</h2>
+<p>Discord Bot's Created</p>
+</div>
+<div class="stat">
+<h2 id="games">0</h2>
+<p>Roblox Games Developed</p>
+</div>
+<div class="stat">
+<h2 id="years">0</h2>
+<p>Years of Experience</p>
+</div>
+</div>
+</div>
+
+<div class="card fade">
 <h2>I am a Roblox developer and a Discord bot developer.</h2>
 <p>DM if you need me to create anything.</p>
+</div>
+
+<div class="card fade">
+<h2>Hire Me</h2>
+<a class="button" href="https://discord.com/users/1473717217186287790" target="_blank">Contact devuserr.</a>
 </div>
 
 </div>
@@ -186,6 +225,31 @@ h1, h2 {
 function toggleAnim() {
   document.body.classList.toggle("no-anim");
 }
+
+function animateValue(id, end) {
+  let el = document.getElementById(id);
+  let start = 0;
+  let duration = 1000;
+  let startTime = null;
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    let progress = timestamp - startTime;
+    let value = Math.min(Math.floor((progress / duration) * end), end);
+    el.textContent = value;
+    if (progress < duration) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
+window.onload = function() {
+  animateValue("bots", 3);
+  animateValue("games", 4);
+  animateValue("years", 1);
+};
 </script>
 
 </body>
