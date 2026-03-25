@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0a0a0a;
+  background: #0f0f0f;
   color: white;
   overflow-x: hidden;
 }
@@ -18,15 +18,16 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(270deg, #111, #000, #222);
-  background-size: 600% 600%;
-  animation: bgMove 10s ease infinite;
+  background: radial-gradient(circle at 20% 20%, #1a1a1a, transparent 40%),
+              radial-gradient(circle at 80% 80%, #1a1a1a, transparent 40%),
+              #0a0a0a;
+  animation: moveBg 12s linear infinite;
 }
 
-@keyframes bgMove {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+@keyframes moveBg {
+  0% { background-position: 0% 0%, 100% 100%; }
+  50% { background-position: 100% 0%, 0% 100%; }
+  100% { background-position: 0% 0%, 100% 100%; }
 }
 
 .container {
@@ -37,33 +38,31 @@ body {
 }
 
 .card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px 0;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(255,255,255,0.1);
-  animation: fadeIn 1s ease forwards;
+  background: rgba(255,255,255,0.04);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 25px 0;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);} 
-  to {opacity: 1; transform: translateY(0);} 
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255,255,255,0.15);
 }
 
 .pfp {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   border: 3px solid white;
-  margin-bottom: 10px;
-  animation: float 3s ease-in-out infinite;
+  margin-bottom: 15px;
+  transition: transform 0.4s ease;
 }
 
-@keyframes float {
-  0% { transform: translateY(0px);} 
-  50% { transform: translateY(-10px);} 
-  100% { transform: translateY(0px);} 
+.pfp:hover {
+  transform: scale(1.1) rotate(3deg);
 }
 
 h1, h2 {
@@ -73,35 +72,82 @@ h1, h2 {
 .button {
   display: inline-block;
   margin: 10px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background: white;
-  color: black;
+  padding: 12px 22px;
+  border-radius: 12px;
+  background: transparent;
+  color: white;
   text-decoration: none;
-  transition: 0.3s;
+  border: 1px solid white;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.button:hover::before {
+  width: 100%;
 }
 
 .button:hover {
-  background: black;
-  color: white;
+  color: black;
+  transform: translateY(-3px);
+}
+
+.toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px 18px;
+  border-radius: 10px;
   border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.typing {
-  border-right: 2px solid white;
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  animation: typing 2s steps(40, end), blink 0.7s infinite;
+.toggle:hover {
+  background: white;
+  color: black;
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+.no-anim .background {
+  animation: none;
+  background: #3a3a3a;
 }
 
-@keyframes blink {
-  50% { border-color: transparent }
+.no-anim .card,
+.no-anim .pfp,
+.no-anim .button {
+  transition: none;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+}
+
+.fade:nth-child(1) { animation-delay: 0.2s; }
+.fade:nth-child(2) { animation-delay: 0.4s; }
+.fade:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 </style>
@@ -109,16 +155,18 @@ h1, h2 {
 <body>
 <div class="background"></div>
 
+<button class="toggle" onclick="toggleAnim()">Toggle Animations</button>
+
 <div class="container">
 
-<div class="card">
+<div class="card fade">
 <img src="pfp.jpg" class="pfp">
 <h1>devuserr</h1>
 <p>User ID: 1473717217186287790</p>
 <p>Joined: February 18, 2026</p>
 </div>
 
-<div class="card">
+<div class="card fade">
 <h2>Server Info</h2>
 <p>BGS: QA Tester</p>
 <a class="button" href="https://discord.gg/bgs" target="_blank">Join BGS</a>
@@ -127,18 +175,18 @@ h1, h2 {
 <p>Invite: Private</p>
 </div>
 
-<div class="card">
-<h2 class="typing">I am a Roblox developer and a Discord bot developer.</h2>
+<div class="card fade">
+<h2>I am a Roblox developer and a Discord bot developer.</h2>
 <p>DM if you need me to create anything.</p>
 </div>
 
-<div class="card">
-<h2>Quick Actions</h2>
-<a class="button" href="https://discord.com/users/1473717217186287790" target="_blank">View Profile</a>
-<a class="button" href="https://discord.gg/bgs" target="_blank">Join Server</a>
 </div>
 
-</div>
+<script>
+function toggleAnim() {
+  document.body.classList.toggle("no-anim");
+}
+</script>
 
 </body>
 </html>
