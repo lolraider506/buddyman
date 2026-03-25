@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(270deg, #111, #000, #222);
+  background-size: 600% 600%;
+  animation: bgMove 10s ease infinite;
+}
+
+@keyframes bgMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);} 
+  to {opacity: 1; transform: translateY(0);} 
+}
+
+.pfp {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-bottom: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px);} 
+  50% { transform: translateY(-10px);} 
+  100% { transform: translateY(0px);} 
+}
+
+h1, h2 {
+  margin: 10px 0;
+}
+
+.button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: black;
+  color: white;
+  border: 1px solid white;
+}
+
+.typing {
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: typing 2s steps(40, end), blink 0.7s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+</style>
+</head>
+<body>
+<div class="background"></div>
+
+<div class="container">
+
+<div class="card">
+<img src="pfp.jpg" class="pfp">
+<h1>devuserr</h1>
+<p>User ID: 1473717217186287790</p>
+<p>Joined: February 18, 2026</p>
+</div>
+
+<div class="card">
+<h2>Server Info</h2>
+<p>BGS: QA Tester</p>
+<a class="button" href="https://discord.gg/bgs" target="_blank">Join BGS</a>
+
+<p>California State Prison: Lead Developer</p>
+<p>Invite: Private</p>
+</div>
+
+<div class="card">
+<h2 class="typing">I am a Roblox developer and a Discord bot developer.</h2>
+<p>DM if you need me to create anything.</p>
+</div>
+
+<div class="card">
+<h2>Quick Actions</h2>
+<a class="button" href="https://discord.com/users/1473717217186287790" target="_blank">View Profile</a>
+<a class="button" href="https://discord.gg/bgs" target="_blank">Join Server</a>
+</div>
+
+</div>
+
+</body>
+</html>
