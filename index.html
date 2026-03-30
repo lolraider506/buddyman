@@ -4,253 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Me</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
-  color: white;
-  overflow-x: hidden;
-}
-
-.background {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: radial-gradient(circle at 20% 20%, #1a1a1a, transparent 40%),
-              radial-gradient(circle at 80% 80%, #1a1a1a, transparent 40%),
-              #0a0a0a;
-  background-size: 200% 200%;
-  animation: moveBg 10s linear infinite;
-}
-
-@keyframes moveBg {
-  0% { background-position: 0% 0%, 100% 100%; }
-  50% { background-position: 100% 0%, 0% 100%; }
-  100% { background-position: 0% 0%, 100% 100%; }
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.card {
-  background: rgba(255,255,255,0.04);
-  border-radius: 20px;
-  padding: 25px;
-  margin: 25px 0;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(255,255,255,0.15);
-}
-
-.pfp {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 3px solid white;
-  margin-bottom: 15px;
-  transition: transform 0.4s ease;
-}
-
-.pfp:hover {
-  transform: scale(1.1) rotate(3deg);
-}
-
-h1, h2 {
-  margin: 10px 0;
-}
-
-.button {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 22px;
-  border-radius: 12px;
-  background: transparent;
-  color: white;
-  text-decoration: none;
-  border: 1px solid white;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.button::before {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: white;
-  transition: width 0.3s ease;
-  z-index: -1;
-}
-
-.button:hover::before {
-  width: 100%;
-}
-
-.button:hover {
-  color: black;
-  transform: translateY(-3px);
-}
-
-.toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  padding: 10px 18px;
-  border-radius: 10px;
-  border: 1px solid white;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.toggle:hover {
-  background: white;
-  color: black;
-}
-
-.no-anim .background {
-  animation: none;
-  background: #3a3a3a;
-}
-
-.no-anim .card,
-.no-anim .pfp,
-.no-anim .button {
-  transition: none;
-}
-
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s forwards;
-}
-
-.fade:nth-child(1) { animation-delay: 0.2s; }
-.fade:nth-child(2) { animation-delay: 0.4s; }
-.fade:nth-child(3) { animation-delay: 0.6s; }
-.fade:nth-child(4) { animation-delay: 0.8s; }
-.fade:nth-child(5) { animation-delay: 1s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.stats {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.stat {
-  margin: 15px;
-}
-
-.stat h2 {
-  font-size: 2em;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#0f172a;color:white;overflow-x:hidden}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:15px 40px;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);z-index:1000}
+nav a{color:white;text-decoration:none;margin:0 15px;transition:0.3s}
+nav a:hover{color:#38bdf8}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero h1{font-size:3rem;animation:fadeIn 2s ease forwards}
+.hero p{opacity:0.7;margin-top:10px}
+section{padding:100px 40px}
+.card{background:rgba(255,255,255,0.05);padding:20px;border-radius:20px;margin-top:20px;transition:0.3s}
+.card:hover{transform:translateY(-10px);box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+.btn{margin-top:20px;padding:10px 20px;border:none;border-radius:10px;background:#38bdf8;color:black;cursor:pointer;transition:0.3s}
+.btn:hover{transform:scale(1.1)}
+video{width:100%;border-radius:15px;margin-top:20px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade{opacity:0;transform:translateY(40px);transition:1s}
+.fade.show{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
-<div class="background"></div>
-
-<button class="toggle" onclick="toggleAnim()">Toggle Animations</button>
-
-<div class="container">
-
-<div class="card fade">
-<img src="pfp.jpg" class="pfp">
-<h1>devuserr.</h1>
-<p>User ID: 1473717217186287790</p>
-<p>Joined: February 18, 2026</p>
+<nav>
+<div>Buddyman</div>
+<div>
+<a href="#about">About</a>
+<a href="#work">My Work</a>
+<a href="#contact">Contact</a>
 </div>
-
-<div class="card fade">
-<h2>Server Info</h2>
-<p>BGS: nothing</p>
-<a class="button" href="https://discord.gg/bgs" target="_blank">Join BGS</a>
-<p>California State Prison: Lead Developer</p>
-<p>Invite: Private</p>
+</nav>
+<div class="hero">
+<h1>Hey, I am buddyman👋</h1>
+<p>Developer • Creator • Builder</p>
+<button class="btn" onclick="scrollToSection('about')">Learn More</button>
 </div>
-
-<div class="card fade">
-<h2>Stats</h2>
-<div class="stats">
-<div class="stat">
-<h2 id="bots">0</h2>
-<p>Discord Bot's Created</p>
+<section id="about" class="fade">
+<h2>About Me</h2>
+<div class="card">
+<p></p>
 </div>
-<div class="stat">
-<h2 id="games">0</h2>
-<p>Roblox Games Developed</p>
+</section>
+<section id="work" class="fade">
+<h2>My Work</h2>
+<div class="card">
+<video controls>
+<source src="test123.mp4" type="video/mp4">
+</video>
 </div>
-<div class="stat">
-<h2 id="years">0</h2>
-<p>Years of Experience</p>
+</section>
+<section id="contact" class="fade">
+<h2>Contact</h2>
+<div class="card">
+<button class="btn">Discord username is devuserr.</button>
 </div>
-</div>
-</div>
-
-<div class="card fade">
-<h2>I am a Roblox developer and a Discord bot developer.</h2>
-<p>DM if you need me to create anything.</p>
-</div>
-
-<div class="card fade">
-<h2>Hire Me</h2>
-<a class="button" href="https://discord.com/users/1473717217186287790" target="_blank">Contact devuserr.</a>
-</div>
-
-</div>
-
+</section>
 <script>
-function toggleAnim() {
-  document.body.classList.toggle("no-anim");
-}
-
-function animateValue(id, end) {
-  let el = document.getElementById(id);
-  let start = 0;
-  let duration = 1000;
-  let startTime = null;
-
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    let progress = timestamp - startTime;
-    let value = Math.min(Math.floor((progress / duration) * end), end);
-    el.textContent = value;
-    if (progress < duration) {
-      requestAnimationFrame(step);
-    }
-  }
-
-  requestAnimationFrame(step);
-}
-
-window.onload = function() {
-  animateValue("bots", 3);
-  animateValue("games", 4);
-  animateValue("years", 1);
-};
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+const faders=document.querySelectorAll('.fade')
+const appearOnScroll=new IntersectionObserver(function(entries,observer){entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('show');observer.unobserve(entry.target)})},{threshold:0.3})
+faders.forEach(fader=>{appearOnScroll.observe(fader)})
 </script>
-
 </body>
 </html>
