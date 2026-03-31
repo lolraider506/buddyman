@@ -1,69 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Me</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#0f172a;color:white;overflow-x:hidden}
-nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:15px 40px;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);z-index:1000}
-nav a{color:white;text-decoration:none;margin:0 15px;transition:0.3s}
-nav a:hover{color:#38bdf8}
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.hero h1{font-size:3rem;animation:fadeIn 2s ease forwards}
-.hero p{opacity:0.7;margin-top:10px}
-section{padding:100px 40px}
-.card{background:rgba(255,255,255,0.05);padding:20px;border-radius:20px;margin-top:20px;transition:0.3s}
-.card:hover{transform:translateY(-10px);box-shadow:0 10px 30px rgba(0,0,0,0.5)}
-.btn{margin-top:20px;padding:10px 20px;border:none;border-radius:10px;background:#38bdf8;color:black;cursor:pointer;transition:0.3s}
-.btn:hover{transform:scale(1.1)}
-video{width:100%;border-radius:15px;margin-top:20px}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.fade{opacity:0;transform:translateY(40px);transition:1s}
-.fade.show{opacity:1;transform:translateY(0)}
-</style>
+    <title>Nothing to see here...</title>
 </head>
-<body>
-<nav>
-<div>Buddyman</div>
-<div>
-<a href="#about">About</a>
-<a href="#work">My Work</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-<div class="hero">
-<h1>Hey, I am buddyman👋</h1>
-<p>Developer • Creator • Builder</p>
-<button class="btn" onclick="scrollToSection('about')">Learn More</button>
-</div>
-<section id="about" class="fade">
-<h2>About Me</h2>
-<div class="card">
-<p></p>
-</div>
-</section>
-<section id="work" class="fade">
-<h2>My Work</h2>
-<div class="card">
-<video controls>
-<source src="test123.mp4" type="video/mp4">
-</video>
-</div>
-</section>
-<section id="contact" class="fade">
-<h2>Contact</h2>
-<div class="card">
-<button class="btn">Discord username is devuserr.</button>
-</div>
-</section>
-<script>
-function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
-const faders=document.querySelectorAll('.fade')
-const appearOnScroll=new IntersectionObserver(function(entries,observer){entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('show');observer.unobserve(entry.target)})},{threshold:0.3})
-faders.forEach(fader=>{appearOnScroll.observe(fader)})
-</script>
+<body style="margin:0; background:black; display:flex; justify-content:center; align-items:center; height:100vh;">
+    <img src="z3on.jpg" style="max-width:100%; max-height:100%;">
 </body>
 </html>
